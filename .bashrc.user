@@ -1,0 +1,32 @@
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# aliases
+alias ssh-pi='ssh pi@192.168.0.102'
+
+# shell customization
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
+# PS1 custom
+function color_my_prompt {
+    local __user_and_host="\[\033[01;32m\]\u@\h"
+    local __cur_location="\[\033[01;34m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[35m\]$"
+    local __last_color="\[\033[00m\]"
+    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+}
+color_my_prompt
+
+# go to git top ('cd -' goes back)
+cdg () {
+    TEMP_PWD=$PWD
+    while ! [ -d .git ]; do
+        cd ..
+    done
+    OLDPWD=$TEMP_PWD
+}
+
