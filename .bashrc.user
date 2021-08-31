@@ -4,6 +4,7 @@
 
 # aliases
 alias ssh-pi='ssh pi@192.168.0.102'
+alias code='GTK_THEME=Breeze-Dark code'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
@@ -30,3 +31,4 @@ cdg () {
     OLDPWD=$TEMP_PWD
 }
 
+export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin
