@@ -35,19 +35,6 @@ Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree'
 
-"Plug 'nvim-lua/popup.nvim'
-"Plug 'nvim-lua/plenary.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
-
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'nvim-lua/completion-nvim'
-"Plug 'steelsojka/completion-buffers'
-
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -57,10 +44,6 @@ colorscheme one-monokai
 source ~/.config/nvim/airline.vim
 source ~/.config/nvim/gitgutter.vim
 source ~/.config/nvim/nerdtree.vim
-"source ~/.config/nvim/ultisnips.vim
-"source ~/.config/nvim/completion-nvim.vim
-"luafile ~/.config/nvim/lsp-config.lua
-"luafile ~/.config/nvim/treesitter-config.lua
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -84,20 +67,4 @@ nnoremap <M-w> : bd<cr>
 
 nnoremap <leader>u :UndotreeToggle<cr>
 nnoremap <C-n> :NERDTreeToggle<cr>
-
-" telescope keybindings
-"nnoremap <C-p> :Telescope find_files<cr>
-"nnoremap <C-f> :Telescope live_grep<cr>
-
-" lsp keybindings
-"nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <leader>gD <cmd>lua vim.lsp.buf.declaration()<CR>
-"nnoremap <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
-"nnoremap <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
-"nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
-"nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
