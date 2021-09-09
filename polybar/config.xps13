@@ -222,7 +222,7 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = " %percentage%%"
 
 bar-width = 10
 bar-indicator = |
