@@ -3,7 +3,9 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ssh-pi='ssh pi@192.168.0.102'
+alias ssh='kitty +kitten ssh'
+alias ssh-chalmers='kitty +kitten ssh oxklint@remote11.chalmers.se'
+alias ssh-pi='kitty +kitten ssh pi@192.168.0.102'
 alias code='GTK_THEME=Breeze-Dark code'
 
 # shell customization
