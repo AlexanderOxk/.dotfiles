@@ -31,8 +31,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 #Disable screen timeout and sleep
-exec xset s off
-exec xset -dpms
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
 
 #Compton
 exec --no-startup-id picom --xrender-sync-fence
@@ -115,6 +115,8 @@ bindsym $mod+a focus parent
 bindsym $mod+b exec firefox
 bindsym $mod+m exec thunderbird
 bindsym $mod+c exec GTK_THEME=Breeze-Dark code 
+bindsym $mod+n exec nautilus
+bindsym $mod+F9 exec ~/.dotfiles/i3/toggle_sink.sh
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
