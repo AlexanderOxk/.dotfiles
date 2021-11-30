@@ -9,6 +9,10 @@ alias ssh-pi='kitty +kitten ssh pi@192.168.0.102'
 alias code='GTK_THEME=Breeze-Dark code'
 alias py='python3'
 alias print-csv='column -t -s,'
+alias heffalump='vncviewer -via heffalump.ita.chalmers.se localhost:6257'
+alias heffalump-password='echo nCOsth9L'
+alias connect-vpn='nmcli con up'
+alias disconnect-vpn='nmcli con down'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
