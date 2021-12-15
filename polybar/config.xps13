@@ -30,8 +30,10 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #282c34
-background-alt = #282c34
+;background = #282c34
+background = #000000
+;background-alt = #282c34
+background-alt = #000000
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #dfdfdf
@@ -42,7 +44,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 26
+height = 32
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -73,8 +75,8 @@ modules-left = i3
 modules-center = xwindow
 modules-right = spotify pulseaudio xbacklight filesystem xkeyboard battery memory cpu wlan date powermenu
 
-tray-position = none
-tray-padding = 2
+tray-position = right
+tray-padding = 4
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -94,7 +96,7 @@ cursor-scroll = ns-resize
 
 [module/spotify]
 type = custom/script
-interval = 1
+interval = 2
 format-prefix = "  "
 format = <label>
 exec = python3 /home/oxklint/.config/polybar/spotify_status.py -f '{song}'
@@ -114,10 +116,10 @@ blacklist-0 = num lock
 
 format-prefix = "   "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = #98c379
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = #98c379
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -126,7 +128,7 @@ label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
-interval = 25
+interval = 60
 
 mount-0 = /
 
@@ -242,27 +244,27 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = 5
 format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = #56b6c2
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
-interval = 2
+interval = 5
 format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = #56b6c2
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
 interface = wlp58s0
-interval = 3.0
+interval = 10
 
 format-connected = <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = #c678dd
 label-connected = "直  %signal%% %essid% %local_ip%"
 
 format-disconnected =
@@ -299,7 +301,7 @@ time-alt = %H:%M:%S
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #c678dd
 
 label = %date% %time%
 
@@ -364,20 +366,20 @@ battery = BAT0
 adapter = AC
 full-at = 99
 time-format = %H:%M
-poll-interval = 5
+poll-interval = 10
 
 format-charging-prefix = " "
 format-charging = <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #e5c07b
 label-charging = %percentage%% %time%
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #98c379
 label-discharging = %percentage%% %time%
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-underline = #98c379
 label-full = %percentage%%
 
 ramp-capacity-0 = " "

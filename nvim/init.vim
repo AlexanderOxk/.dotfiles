@@ -40,6 +40,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 colorscheme one-monokai
+highlight Normal guibg=black guifg=white
 
 source ~/.config/nvim/airline.vim
 source ~/.config/nvim/gitgutter.vim
