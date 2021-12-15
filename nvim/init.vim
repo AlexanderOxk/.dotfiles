@@ -22,11 +22,13 @@ set signcolumn=yes
 set completeopt=menuone,noinsert
 set shortmess+=c
 set termguicolors
+set background=dark
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'gruvbox-community/gruvbox'
 Plug 'fratajczak/one-monokai-vim'
+Plug 'josegamez82/starrynight'
+Plug 'habamax/vim-habanight'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,8 +41,7 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-colorscheme one-monokai
-highlight Normal guibg=black guifg=white
+colorscheme starrynight
 
 source ~/.config/nvim/airline.vim
 source ~/.config/nvim/gitgutter.vim
