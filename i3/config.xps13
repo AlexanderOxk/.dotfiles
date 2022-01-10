@@ -243,7 +243,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Set wallpaper
-#exec_always --no-startup-id feh --bg-fill /home/oxklint/Pictures/Wallpapers/edges.jpg
+exec_always --no-startup-id feh --bg-fill /home/oxklint/.dotfiles/wallpaper/chip.jpg
 
 #Polybar launch
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
