@@ -19,8 +19,8 @@ set incsearch
 set scrolloff=8
 set colorcolumn=100
 set signcolumn=yes
-set completeopt=menuone,noinsert
-set shortmess+=c
+set completeopt=menuone,longest
+"set shortmess+=c
 set termguicolors
 set background=dark
 
@@ -29,6 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'fratajczak/one-monokai-vim'
 Plug 'josegamez82/starrynight'
 Plug 'habamax/vim-habanight'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -41,7 +42,7 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-colorscheme starrynight
+colorscheme one-monokai
 
 source ~/.config/nvim/airline.vim
 source ~/.config/nvim/gitgutter.vim
