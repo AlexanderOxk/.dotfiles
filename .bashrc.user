@@ -3,20 +3,17 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ssh='kitty +kitten ssh'
-alias ssh-chalmers='kitty +kitten ssh oxklint@remote11.chalmers.se'
-alias ssh-pi='kitty +kitten ssh pi@192.168.50.167'
-alias code='GTK_THEME=Mint-Y-Dark-Aqua code'
+alias ls='\ls -hlF --color=auto'
+alias ll='\ls -ahlF --color=auto'
+alias vim='nvim'
+alias ssh-pi='ssh pi@192.168.50.167'
 alias py='python3'
 alias print-csv='column -t -s,'
-alias heffalump='vncviewer -via heffalump.ita.chalmers.se localhost:6257'
-alias heffalump-password='echo nCOsth9L'
-alias connect-vpn='nmcli con up'
-alias disconnect-vpn='nmcli con down'
+alias network-share='hostname -I && python3 -m http.server'
+alias shutdown='systemctl poweroff'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
-bind 'TAB:menu-complete'
 
 # PS1 custom
 function color_my_prompt {
@@ -39,4 +36,5 @@ cdg () {
     OLDPWD=$TEMP_PWD
 }
 
-export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin:/home/oxklint/.local/bin
