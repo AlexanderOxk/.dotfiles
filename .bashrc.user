@@ -8,6 +8,7 @@ alias ll='\ls -ahlF --color=auto'
 alias vim='nvim'
 alias ssh-pi='ssh pi@192.168.50.167'
 alias py='python3'
+alias python='python3'
 alias print-csv='column -t -s,'
 alias network-share='hostname -I && python3 -m http.server'
 alias shutdown='systemctl poweroff'
@@ -38,3 +39,8 @@ cdg () {
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin:/home/oxklint/.local/bin
+
+if [ -f "/tools/Xilinx/Vivado/2022.1/settings64.sh" ]
+then
+    source /tools/Xilinx/Vivado/2022.1/settings64.sh
+fi
