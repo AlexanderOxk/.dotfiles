@@ -6,17 +6,13 @@
 alias ls='ls -lFh --color '
 alias ll='\ls -alFh --color'
 alias vim='nvim'
-alias ssh='kitty +kitten ssh'
-alias ssh-chalmers='kitty +kitten ssh oxklint@remote11.chalmers.se'
-alias ssh-pi='kitty +kitten ssh pi@192.168.0.102'
+alias ssh-pi='ssh pi@192.168.0.102'
 alias code='GTK_THEME=Breeze-Dark code'
 alias py='python3'
 alias python='python3'
 alias print-csv='column -t -s,'
-alias heffalump='vncviewer -via heffalump.ita.chalmers.se localhost:6257'
-alias heffalump-password='echo nCOsth9L'
-alias connect-vpn='nmcli con up'
-alias disconnect-vpn='nmcli con down'
+alias wake-desktop='sudo etherwake -i wlp58s0 40:b0:76:44:fe:20'
+alias ssh-desktop='ssh oxklint@192.168.50.106'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
@@ -43,4 +39,5 @@ cdg () {
     OLDPWD=$TEMP_PWD
 }
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 source /tools/Xilinx/Vivado/2022.1/settings64.sh
