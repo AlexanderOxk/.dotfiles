@@ -3,20 +3,20 @@
 [[ $- != *i* ]] && return
 
 # aliases
-alias ls='ls -lFh --color '
-alias ll='\ls -alFh --color'
+alias ls='\ls -hlF --color=auto'
+alias ll='\ls -ahlF --color=auto'
 alias vim='nvim'
-alias ssh-pi='ssh pi@192.168.0.102'
-alias code='GTK_THEME=Breeze-Dark code'
+alias wake-desktop='sudo etherwake -i wlp58s0 40:b0:76:44:fe:20'
+alias ssh-desktop='ssh oxklint@192.168.50.106'
+alias ssh-pi='ssh pi@192.168.50.167'
 alias py='python3'
 alias python='python3'
 alias print-csv='column -t -s,'
-alias wake-desktop='sudo etherwake -i wlp58s0 40:b0:76:44:fe:20'
-alias ssh-desktop='ssh oxklint@192.168.50.106'
+alias network-share='hostname -I && python3 -m http.server'
+alias shutdown='systemctl poweroff'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
-bind 'TAB:menu-complete'
 
 # PS1 custom
 function color_my_prompt {
@@ -40,4 +40,9 @@ cdg () {
 }
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-source /tools/Xilinx/Vivado/2022.1/settings64.sh
+export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin:/home/oxklint/.local/bin
+
+if [ -f "/tools/Xilinx/Vivado/2022.1/settings64.sh" ]
+then
+    source /tools/Xilinx/Vivado/2022.1/settings64.sh
+fi
