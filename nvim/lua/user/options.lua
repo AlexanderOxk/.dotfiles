@@ -1,5 +1,5 @@
 vim.opt.background = "dark"
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "120"
 vim.opt.completeopt = { "menuone", "longest" }
 vim.opt.cursorline = true
 vim.opt.encoding = "utf-8"

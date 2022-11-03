@@ -26,13 +26,14 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<Tab>", ":bnext<CR>", opts)
+keymap("n", "<M-d>", ":bnext<CR>", opts)
+keymap("n", "<M-a>", ":bprevious<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<M-q>", "<cmd>Bdelete<CR>", opts)
+keymap("n", "<M-q>", "<cmd>bdelete<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -48,6 +49,5 @@ keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
