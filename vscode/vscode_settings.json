@@ -1,0 +1,232 @@
+{
+    // Workbench
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook",
+    },
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.view.alwaysShowHeaderActions": true,
+    "window.commandCenter": false,
+    // Editor
+    "editor.lineNumbers": "relative",
+    "editor.cursorSurroundingLines": 8,
+    "editor.guides.bracketPairs": true,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [
+        100,
+        120
+    ],
+    "editor.tabCompletion": "on",
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+        ".bashrc.user": "shellscript"
+    },
+    "extensions.ignoreRecommendations": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDragAndDrop": false,
+    "editor.wordBasedSuggestionsMode": "currentDocument",
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "explorer.confirmDelete": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.renderCharacters": false,
+    "telemetry.telemetryLevel": "off",
+    // Terminal
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.scrollback": 50000,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.enablePersistentSessions": false,
+    // GIT
+    "git.detectSubmodulesLimit": 20,
+    "git.ignoreSubmodules": true,
+    "git.detectSubmodules": false,
+    // SystemVerilog
+    "[systemverilog]": {
+        "editor.tabSize": 2,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "eoxkale.svc2000",
+    },
+    "systemverilog.documentSymbolsPrecision": "fast",
+    "systemverilog.enableIncrementalIndexing": false,
+    "systemverilog.forceFastIndexing": true,
+    "systemverilog.formatCommand": "",
+    "systemverilog.disableIndexing": true,
+    "svc2000.path": "/home/oxklint/.local/bin/svc2000-ls",
+    // Python
+    "python.formatting.blackArgs": [
+        "-l 120"
+    ],
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    // Misc
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.files.exclude": {
+        "build": true,
+        "**/.vscode": true,
+        "**/.vs": true
+    },
+    "cmake.configureOnOpen": false,
+    // VIM
+    "vim.highlightedyank.enable": true,
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                ":nohl"
+            ],
+            "silent": true
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p"
+            ],
+            "after": [
+                "_d",
+                "P"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "after": [
+                ">",
+                "g",
+                "v"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "after": [
+                "<",
+                "g",
+                "v"
+            ],
+            "silent": true
+        },
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "bookmarks.clearFromAllFiles"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<C-d>"
+            ],
+            "after": [
+                "<C-d>",
+                "z",
+                "z"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<C-u>"
+            ],
+            "after": [
+                "<C-u>",
+                "z",
+                "z"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z"
+            ],
+            "silent": true
+        }
+    ],
+}
+

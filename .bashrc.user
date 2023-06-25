@@ -3,22 +3,33 @@
 [[ $- != *i* ]] && return
 
 # aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ls='\ls -hlF --color=auto'
 alias ll='\ls -ahlF --color=auto'
+
+alias code='GTK_THEME=OneDark code'
 alias vim='nvim'
-alias wake-desktop='sudo etherwake -i wlp58s0 40:b0:76:44:fe:20'
-alias ssh-desktop='ssh oxklint@192.168.50.106'
 alias ssh-pi='ssh pi@192.168.50.167'
 alias py='python3'
 alias python='python3'
-alias print-csv='column -t -s,'
 alias network-share='hostname -I && python3 -m http.server'
 alias shutdown='systemctl poweroff'
+alias vivado='source ~/.local/xilinx/Vivado/2023.1/settings64.sh && vivado'
+
+alias icat='kitty +kitten icat'
 
 # shell customization
 bind 'set show-all-if-ambiguous on'
 
 # PS1 custom
+rightprompt()
+{
+    printf "%*s" $COLUMNS "$(date +%A\ %H\:%M\:%S)"
+}
+DATEPROMPT="\[\033[01;93m\]\[\$(tput sc; rightprompt; tput rc)\]"
+
 function color_my_prompt {
     local __user_and_host="\[\033[01;32m\]\u@\h"
     local __cur_location="\[\033[01;34m\]\w"
@@ -26,7 +37,7 @@ function color_my_prompt {
     local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
-    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+    export PS1="$DATEPROMPT$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
 }
 color_my_prompt
 
@@ -40,9 +51,8 @@ cdg () {
 }
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH=$PATH:/tools/Xilinx/Vivado/2021.1/bin:/tools/Xilinx/Vitis/2021.1/bin:/home/oxklint/.local/bin
+export PATH=$PATH:/home/oxklint/.local/bin
 
-if [ -f "/tools/Xilinx/Vivado/2022.1/settings64.sh" ]
-then
-    source /tools/Xilinx/Vivado/2022.1/settings64.sh
-fi
+export CARGO_HOME=/home/oxklint/.local/rust/cargo
+export RUSTUP_HOME=/home/oxklint/.local/rust/rustup
+

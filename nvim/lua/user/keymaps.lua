@@ -41,13 +41,3 @@ keymap("v", "p", '"_dP', opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
--- Plugins --
-
--- NvimTree
-keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
-
--- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
