@@ -228,5 +228,8 @@
             "silent": true
         }
     ],
+    "workbench.editor.empty.hint": "hidden",
+    "editor.fontFamily": "SF-Mono-Regular, 'Droid Sans Mono', 'monospace', monospace",
+    "terminal.integrated.fontFamily": "SF-Mono",
 }
 
