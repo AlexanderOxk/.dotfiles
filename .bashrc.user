@@ -5,6 +5,13 @@ alias ....='cd ../../..'
 alias ls='\ls -hlF --color=auto'
 alias ll='\ls -ahlF --color=auto'
 
+alias gcl='git checkout -'
+alias gss='git branch && echo " " && git status'
+alias gca='git commit --amend'
+alias gl='git log'
+alias gll='git log --all --graph --decorate --oneline --simplify-by-decoration'
+
+alias bashrc='nvim ${HOME}/.bashrc.user'
 alias code='GTK_THEME=OneDark code'
 alias vim='nvim'
 alias ssh-pi='ssh pi@192.168.50.167'
@@ -26,29 +33,14 @@ HIST_CLEANER_CLEAN_PATTERNS="${HOME}/.config/hclean/clean_patterns"
 HIST_CLEANER_CMD="hclean -e 10 -c ${HIST_CLEANER_CLEAN_PATTERNS} ${HIST_FILE_PATH}"
 HISTIGNORE="hg *"
 
-PROMPT_COMMAND="history -a;${HIST_CLEANER_CMD};${PROMPT_COMMAND}"
+# Exports
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/rust/cargo/bin"
 
-# shell customization
-bind 'set show-all-if-ambiguous on'
+export CARGO_HOME=/home/oxklint/.local/rust/cargo
+export RUSTUP_HOME=/home/oxklint/.local/rust/rustup
 
-# PS1 custom
-rightprompt()
-{
-    printf "%*s" $COLUMNS "$(date +%A\ %H\:%M\:%S)"
-}
-DATEPROMPT="\[\033[01;93m\]\[\$(tput sc; rightprompt; tput rc)\]"
-
-function color_my_prompt {
-    local __user_and_host="\[\033[01;32m\]\u@\h"
-    local __cur_location="\[\033[01;34m\]\w"
-    local __git_branch_color="\[\033[31m\]"
-    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-    local __prompt_tail="\[\033[35m\]$"
-    local __last_color="\[\033[00m\]"
-    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
-}
-color_my_prompt
-
+# Functions
 # go to git top ('cd -' goes back)
 cdg () {
     TEMP_PWD=$PWD
@@ -66,9 +58,65 @@ function hg {
     fi
 }
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/rust/cargo/bin"
+function rgr {
+    if [ "$#" -ne 2 ] && [ "$#" -ne 3 ]; then
+        echo "Usage: rgr <pattern> <replacement> [root dir]"
+        echo " "
+        echo "Example: rgr foo bar ./my_dir"
+        echo "Replaces 'foo' with 'bar' in all version controlled files under my_dir."
+        echo "If no root dir is specified, current dir is used."
+    elif [ "$#" == 2 ]; then
+        echo "Replacing '$1' with '$2' in the following files:"
+        rg $1 --files-with-matches
+        rg $1 --files-with-matches | xargs sed -r -i "s/$1/$2/g"
+        echo "Done."
+    else
+        echo "Replacing '$1' with '$2' in the following files:"
+        rg $1 $3 --files-with-matches
+        rg $1 $3 --files-with-matches | xargs sed -r -i "s/$1/$2/g"
+        echo "Done."
+    fi
+}
 
-export CARGO_HOME=/home/oxklint/.local/rust/cargo
-export RUSTUP_HOME=/home/oxklint/.local/rust/rustup
+function gpm {
+  MASTER_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}')
+  git checkout $MASTER_BRANCH && git pull && git checkout -
+}
+
+function gcm {
+  MASTER_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}')
+  git checkout $MASTER_BRANCH
+}
+
+# Prompt customization
+bind 'set show-all-if-ambiguous on'
+
+__prompt_command() {
+    # Prompt coloring
+    local EXIT="$?"                # This needs to be first
+    PS1=""
+
+    local RCol='\[\e[0m\]'
+
+    local Red='\[\e[1;31m\]'
+
+    local __user_and_host="\[\033[01;32m\]\u@\h"
+    local __cur_location="\[\033[01;34m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[35m\]$"
+    local __last_color="\[\033[00m\]"
+
+    if [ $EXIT != 0 ]; then
+        PS1+="${Red}[${EXIT}] ${RCol}"        # Add red if exit code non 0
+    fi
+
+    PS1+="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+    # End prompt colors
+
+    history -a
+    ${HIST_CLEANER_CMD}
+}
+
+PROMPT_COMMAND=__prompt_command
 
