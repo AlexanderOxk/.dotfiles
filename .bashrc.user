@@ -25,16 +25,16 @@ alias vitis='source /tools/Xilinx/Vivado/2023.1/settings64.sh && vitis'
 alias icat='kitty +kitten icat'
 
 # History
-HIST_FILE_PATH="${HOME}/.config/hclean/history"
+HIST_FILE_PATH="${HOME}/.cache/bash_history"
 HISTFILE=$HIST_FILE_PATH
 HISTSIZE=10000
 HISTFILESIZE=10000
-HIST_CLEANER_CLEAN_PATTERNS="${HOME}/.config/hclean/clean_patterns"
-HIST_CLEANER_CMD="hclean -e 10 -c ${HIST_CLEANER_CLEAN_PATTERNS} ${HIST_FILE_PATH}"
+# HIST_CLEANER_CLEAN_PATTERNS="${HOME}/.config/hclean/clean_patterns"
+# HIST_CLEANER_CMD="hclean -e 10 -c ${HIST_CLEANER_CLEAN_PATTERNS} ${HIST_FILE_PATH}"
 HISTIGNORE="hg *"
 
 # Exports
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/rust/cargo/bin"
 
 export CARGO_HOME=/home/oxklint/.local/rust/cargo
@@ -114,8 +114,8 @@ __prompt_command() {
     PS1+="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
     # End prompt colors
 
-    history -a
-    ${HIST_CLEANER_CMD}
+    # ${HIST_CLEANER_CMD}
+    # history -a
 }
 
 PROMPT_COMMAND=__prompt_command
