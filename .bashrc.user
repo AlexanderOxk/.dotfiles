@@ -88,9 +88,6 @@ function gcm {
   git checkout $MASTER_BRANCH
 }
 
-# Prompt customization
-bind 'set show-all-if-ambiguous on'
-
 __prompt_command() {
     # Prompt coloring
     local EXIT="$?"                # This needs to be first
