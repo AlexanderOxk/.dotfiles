@@ -2,7 +2,6 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias ls='\ls -hlF --color=auto'
 alias ll='\ls -ahlF --color=auto'
 
 alias gcl='git checkout -'
@@ -21,6 +20,7 @@ alias network-share='hostname -I && python3 -m http.server'
 alias shutdown='systemctl poweroff'
 alias vivado='source /tools/Xilinx/Vivado/2023.1/settings64.sh && vivado'
 alias vitis='source /tools/Xilinx/Vivado/2023.1/settings64.sh && vitis'
+alias pdf-viewer='atril'
 
 alias icat='kitty +kitten icat'
 
