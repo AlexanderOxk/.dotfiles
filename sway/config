@@ -8,6 +8,7 @@ font Cantarell 12
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec_always nm-applet --indicator
 exec_always blueman-applet
+exec_always kanshi
 
 # exec xrandr --output eDP-1 --auto --pos 3840x1732 --output DP-1 --primary --auto --pos 0x0
 

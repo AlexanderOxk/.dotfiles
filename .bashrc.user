@@ -34,7 +34,7 @@ HISTFILESIZE=10000
 HISTIGNORE="hg *"
 
 # Exports
-# export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/rust/cargo/bin"
 
 export CARGO_HOME=/home/oxklint/.local/rust/cargo
