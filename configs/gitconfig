@@ -1,0 +1,16 @@
+[user]
+    email = alex.oxklint@gmail.com
+    name = Alexander Oxklint
+[core]
+    editor = nvim
+[push]
+    autoSetupRemote = true
+[alias]
+    s = status
+    co = checkout
+    cl = checkout -
+    ca = commit --amend
+    ro = !git rebase origin/$(git rev-parse --abbrev-ref HEAD)
+    l = log
+    ll = log --all --graph --decorate --oneline
+    ll-no-tags = log --all --graph --decorate --oneline --decorate-refs-exclude=refs/tags
