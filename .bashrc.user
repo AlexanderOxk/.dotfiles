@@ -4,24 +4,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ll='\ls -ahlF --color=auto'
 
-alias gcl='git checkout -'
-alias gss='git branch && echo " " && git status'
-alias gca='git commit --amend'
-alias gl='git log'
-alias gll='git log --all --graph --decorate --oneline'
-
 alias bashrc='nvim ${HOME}/.bashrc.user'
-alias code='GTK_THEME=OneDark code'
 alias vim='nvim'
-alias ssh-pi='ssh pi@192.168.50.167'
 alias py='python3'
 alias python='python3'
-alias mysql-root='mysql -u root -p'
 alias network-share='hostname -I && python3 -m http.server'
 alias shutdown='systemctl poweroff'
-alias vivado='source /tools/Xilinx/Vivado/2023.1/settings64.sh && vivado'
-alias vitis='source /tools/Xilinx/Vivado/2023.1/settings64.sh && vitis'
-alias pdf-viewer='atril'
+alias tmux='unset __ETC_PROFILE_NIX_SOURCED && tmux'
+alias vivado='distrobox enter vivado -- /home/ubuntu/tools/vivado/2025.2/Vivado/bin/vivado'
 
 alias icat='kitty +kitten icat'
 
@@ -36,10 +26,11 @@ HISTIGNORE="hg *"
 
 # Exports
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/rust/cargo/bin"
-
-export CARGO_HOME=/home/oxklint/.local/rust/cargo
-export RUSTUP_HOME=/home/oxklint/.local/rust/rustup
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
+export RUSTUP_HOME="$HOME/.local/share/rust/rustup"
+export CARGO_HOME="$HOME/.local/share/rust/cargo"
 
 # Functions
 # go to git top ('cd -' goes back)
@@ -59,35 +50,6 @@ function hg {
     fi
 }
 
-function rgr {
-    if [ "$#" -ne 2 ] && [ "$#" -ne 3 ]; then
-        echo "Usage: rgr <pattern> <replacement> [root dir]"
-        echo " "
-        echo "Example: rgr foo bar ./my_dir"
-        echo "Replaces 'foo' with 'bar' in all version controlled files under my_dir."
-        echo "If no root dir is specified, current dir is used."
-    elif [ "$#" == 2 ]; then
-        echo "Replacing '$1' with '$2' in the following files:"
-        rg $1 --files-with-matches
-        rg $1 --files-with-matches | xargs sed -r -i "s/$1/$2/g"
-        echo "Done."
-    else
-        echo "Replacing '$1' with '$2' in the following files:"
-        rg $1 $3 --files-with-matches
-        rg $1 $3 --files-with-matches | xargs sed -r -i "s/$1/$2/g"
-        echo "Done."
-    fi
-}
-
-function gpm {
-  MASTER_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}')
-  git checkout $MASTER_BRANCH && git pull && git checkout -
-}
-
-function gcm {
-  MASTER_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | awk -F "/" '{print $NF}')
-  git checkout $MASTER_BRANCH
-}
 
 __prompt_command() {
     # Prompt coloring
@@ -97,6 +59,7 @@ __prompt_command() {
     local RCol='\[\e[0m\]'
 
     local Red='\[\e[1;31m\]'
+    local Blue='\[\033[01;34m\]'
 
     local __user_and_host="\[\033[01;32m\]\u@\h"
     local __cur_location="\[\033[01;34m\]\w"
@@ -107,6 +70,10 @@ __prompt_command() {
 
     if [ $EXIT != 0 ]; then
         PS1+="${Red}[${EXIT}] ${RCol}"        # Add red if exit code non 0
+    fi
+
+    if [[ -n $IN_NIX_SHELL ]]; then
+        PS1+="${Blue}[nix]${RCol}"
     fi
 
     PS1+="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
